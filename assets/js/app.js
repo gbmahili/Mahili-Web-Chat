@@ -298,13 +298,11 @@ $(document).ready(() => {
         $("html, body").animate({
             scrollTop: $(".all-messages").offset().top + $(".all-messages")[0].scrollHeight
         }, 1000, function () {
-            var wtf = $('.all-messages');
-            var height = wtf[0].scrollHeight;
-            wtf.scrollTop(height);
+            var messagesDiv = $('.all-messages');
+            var height = messagesDiv[0].scrollHeight;
+            messagesDiv.scrollTop(height);
         });
-        return false;
-        // console.log("clicked down arror")
-        
+        return false;        
     });
     
 
