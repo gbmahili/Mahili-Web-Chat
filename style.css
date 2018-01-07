@@ -62,8 +62,8 @@ ul{
   display:block;
 }
 
-.contact form p{
-  margin:0;
+#sign-up{
+  margin-top:50px;
 }
 
 .contact form .full{
@@ -218,11 +218,15 @@ textarea {
     opacity: 0.5;
   }
 }
+
+.contact-form p.full{  
+    margin-top: -40px;
+}
 /* End Google Hangout Style */
 /* End GBM CSS */
 
 /* LARGE SCREENS */
-@media(min-width:700px){
+@media screen and (min-width: 700px){
   .wrapper{
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -234,5 +238,35 @@ textarea {
 
   .company-info h3, .company-info ul, .brand{
     text-align: left;
+  }
+
+}
+/* Less than 700px */
+@media screen and (max-width: 800px){
+  body{
+    
+    padding: 0.5em;
+  }  
+
+  .contact form{
+    display: block;
+    padding: 2em;
+  }
+  #chatting-form{
+    padding: 0;
+  }
+
+  .wrapper > *{
+    padding:.5em;
+  }
+  .container{
+    padding: 0;
+  }
+
+  .sign-up-form h3, .login-form h3{
+    padding-left: 1em;
+  }
+  p{
+    margin-bottom: 0.5rem;
   }
 }

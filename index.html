@@ -52,8 +52,7 @@
               <label>Password</label>
               <input class="form-control" type="password" id="sign-up-password" required>
             </p>
-            <p class="full">
-              
+            <p class="full">              
               <button id="sign-up">Sign Up</button>
             </p>
             <div class="full">
@@ -85,6 +84,11 @@
                 <a class="text-center" href="#">Forgot Password?</a>
               </center>
             </p>
+            <div class="full">
+              <center>
+                <div class="errorMessage"></div>
+              </center>
+            </div>
           </form>
         </div>
 
@@ -106,7 +110,7 @@
                   </ol>                
                 </section>
               </div>
-              <form>
+              <form id="chatting-form">
                 <p class="full">
                   <textarea id="chat-message" rows="1" style="overflow:hidden; border:none" placeholder="Start chatting" required></textarea>
                 </p>

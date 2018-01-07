@@ -175,7 +175,11 @@ $(document).ready(() => {
             })
             .catch(function (e) {
                 //Show message if we couldn't authenticate
-                console.log("SORRY, WE COULDN'T SIGN YOU IN. CHECK YOUR EMAIL OR PASSWORD");
+                $(".errorMessage").css("display", "block");
+                $(".errorMessage").html("<div class='alert alert-danger'>" + e.message + "</div>");
+                setTimeout(() => {
+                    $(".errorMessage").css("display", "none");
+                }, 5000);
             });
         $(".form-control").val("");
     });//End of login
