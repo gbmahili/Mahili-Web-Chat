@@ -10,6 +10,37 @@ body{
   padding:1em;
 }
 
+.fa-toggle-on > span, .fa-toggle-off > span{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+.fa-toggle-on, .fa-toggle-off, .fa-angle-down, .fa-angle-up {
+  padding: 10px;
+  font-size: 0.9em;
+  background: transparent;
+  margin: 5px;
+  text-align: center;
+  margin:0 0 1rem 0;
+  border-radius: 3px;
+  border: 1px solid #c9e6ff;
+  display: none;
+}
+
+.fa-angle-up, .fa-angle-down{  
+  position: fixed;
+  right: 25px; 
+  padding: 10px;
+}
+
+.fa-angle-up{    
+  bottom : 100px;
+  border: 1px solid #42db9c;
+}
+
+.fa-angle-down{
+  top: 65px;
+}
+
 .container{
   max-width:1170px;
   margin-left:auto;
@@ -243,8 +274,7 @@ textarea {
 }
 /* Less than 700px */
 @media screen and (max-width: 800px){
-  body{
-    
+  body{    
     padding: 0.5em;
   }  
 
@@ -268,5 +298,8 @@ textarea {
   }
   p{
     margin-bottom: 0.5rem;
+  }
+  .fa-toggle-on {
+    display: inline-block;
   }
 }

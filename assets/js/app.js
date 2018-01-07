@@ -163,7 +163,16 @@ $(document).ready(() => {
                                 $(".logout-button").css("display", "block");
                                 loginForm.css("display", "none");
                                 chatArea.css("display", "block");
-                                $("textarea").focus();                               
+                                $("textarea").focus(); 
+                                
+                                // Show scroll down:
+                                var vpWidth = $(window).width();
+                                if (vpWidth <= 700) {
+                                    $(".fa-angle-down").css("display", "inline-block");
+                                    $(".fa-angle-up").css("display", "inline-block");
+                                }
+                                
+                                //console.log(vpWidth);
                             }else{
                                 //console.log("Can't see");
                             }
@@ -231,6 +240,12 @@ $(document).ready(() => {
         if (firebaseUser) {
             //Inform that the user is logged in:
             var currentUser = firebase.auth().currentUser;
+            // Show scroll down:
+            var vpWidth = $(window).width();
+            if (vpWidth <= 700) {
+                $(".fa-angle-down").css("display", "inline-block");
+                $(".fa-angle-up").css("display", "inline-block");
+            };
             //Check if we have a user
             if (currentUser != null) {
                 // Watch for any change in the database then empty the discussion field...
@@ -249,4 +264,20 @@ $(document).ready(() => {
         var ddate_time = moment().format('LLLL');   
         $("h5").text(ddate_time);
     }, 1000);
+    // Check if the page has been refreshed, if it did, logout the user.
+    window.onbeforeunload = function () {
+        $(".logout-button").click();
+    }
+
+    $(".fa-toggle-on").click(() => {
+        $(".fa-toggle-on").css("display","none");
+        $(".fa-toggle-off").css("display", "inline-block");
+        $(".company-info").css("display", "none");
+    });
+    $(".fa-toggle-off").click(() => {
+        $(".fa-toggle-on").css("display", "inline-block");
+        $(".fa-toggle-off").css("display", "none");
+        $(".company-info").css("display", "block");
+    });
+
 });//-End of document.ready
