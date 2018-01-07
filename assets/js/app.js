@@ -215,7 +215,7 @@ $(document).ready(() => {
         location.reload();
         console.log(allMessages);
         $("#current-user-names").text("No one is logged in!");
-        $(".discussion").text("");
+        
     });
 
     // Sending Message:
@@ -293,5 +293,19 @@ $(document).ready(() => {
         $(".fa-toggle-off").css("display", "none");
         $(".company-info").css("display", "none");
     });
+
+    $(".fa-angle-down").click(() => {
+        $("html, body").animate({
+            scrollTop: $(".all-messages").offset().top + $(".all-messages")[0].scrollHeight
+        }, 1000, function () {
+            var wtf = $('.all-messages');
+            var height = wtf[0].scrollHeight;
+            wtf.scrollTop(height);
+        });
+        return false;
+        // console.log("clicked down arror")
+        
+    });
+    
 
 });//-End of document.ready
