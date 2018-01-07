@@ -140,13 +140,18 @@ $(document).ready(() => {
                                     console.log(currentUserNames);
                                     // Append messages
                                     allMessages.forEach(element => {
-                                        // First, we create the single chat:
+                                        // First, we check who is logged in and check the name of the message sender
                                         var currentUserClass;
+                                        // If the current user name matches the email of the person logged in
                                         if (currentUserNames == element[0]) {
+                                            // We create a class called 'self'
                                             currentUserClass = "self";
                                         } else {
+                                            // Otherwise, we create a class called 'other'
                                             currentUserClass = "other";
                                         }
+                                        // We then use the class. In the css file, messages with 'self' show on right
+                                        // While those with 'others' show up on the left
                                         singleMessage = `<li class="${currentUserClass}">
                                                             <div class="avatar"></div>
                                                             <div class="messages">
@@ -192,6 +197,15 @@ $(document).ready(() => {
             });
         $(".form-control").val("");
     });//End of login
+
+    // Watch for keyup in the login-password
+    $('#login-password').keyup(function (e) {
+        // If it is 'Enter'
+        if (e.keyCode == 13) {
+            // Click the login button
+            $("#login").click();
+        }
+    });
 
     // Logout:
     $(".logout-button").click(e => {
