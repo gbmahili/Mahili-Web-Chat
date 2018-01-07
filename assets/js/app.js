@@ -8,9 +8,7 @@ $(document).ready(() => {
         storageBucket: "mahili-quick-start.appspot.com",
         messagingSenderId: "502164788776"
     };
-    firebase.initializeApp(config);
-
-    
+    firebase.initializeApp(config);    
     // Create a database    
     var database = firebase.database();
     var singleMessageArray = [];
@@ -245,7 +243,7 @@ $(document).ready(() => {
             database.ref("/allMessages");
             database.ref().update({"allMessages": singleMessageArray });
             // Empty the field where user enters chat message
-            $("#chat-message").val("");            
+            $("#chat-message").val("");
         }
     });
 
@@ -264,6 +262,7 @@ $(document).ready(() => {
             if (currentUser != null) {
                 // Watch for any change in the database then empty the discussion field...
                 database.ref().on("child_added", function (childSnapshot) {
+                    
                     // Empty the discussion field
                     $(".discussion").empty();
                 });
