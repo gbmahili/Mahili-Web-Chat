@@ -285,13 +285,15 @@ $(document).ready(() => {
 
     $(".fa-toggle-on").click(() => {
         $(".fa-toggle-on").css("display","none");
+        console.log("Clicked on Show")
         $(".fa-toggle-off").css("display", "inline-block");
-        $(".company-info").css("display", "none");
+        $(".company-info").css("display", "block");
     });
     $(".fa-toggle-off").click(() => {
+        console.log("Clicked on Hide")
         $(".fa-toggle-on").css("display", "inline-block");
         $(".fa-toggle-off").css("display", "none");
-        $(".company-info").css("display", "block");
+        $(".company-info").css("display", "none");
     });
 
 });//-End of document.ready
