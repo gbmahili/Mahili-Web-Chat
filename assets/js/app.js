@@ -49,7 +49,7 @@ $(document).ready(() => {
                         console.log("Permession not granted, you can inform the user.");
                     }
                 });
-            }
+            }            
         }
                
     });
