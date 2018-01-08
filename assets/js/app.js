@@ -18,6 +18,40 @@ $(document).ready(() => {
         singleMessageArray = snap.val().allMessages;
         // Clear the discussion field.
         $(".discussion").empty();
+        // Send a web notification on value change:
+        var currentLoggedInUser = $("#current-user-names").attr("current-user-names");
+        var lastMessageSender = singleMessageArray[singleMessageArray.length - 1][0];
+        var lastMessageSent = singleMessageArray[singleMessageArray.length - 1][3];
+        // Check if the user is logged-in: The $("#current-user-names").attr("current-user-names") grabs a name of the logged in user, which is created when a user logs in and renders it to the dom
+        // Then, check if that user is not the one who sent the last message: Grab the name of the last message from the singleArrayMessage array
+        if (currentLoggedInUser != undefined && currentLoggedInUser != lastMessageSender) {
+            //So, if the user logged in is defined (means, it is not undefined) and the that user did not send the last message, we check if their browser supports notifications:
+            if ("Notification" in window) {
+                // If notifications are allowed, we request the user for permission:
+                let ask = Notification.requestPermission();
+                // Then, we can then check if we got permission or not:
+                ask.then(function (permession) {
+                    // IF permission was granted:                    
+                    if (permession === "granted") {
+                        //If permission was granted, we create the notification using the last message sender's name as the title
+                        let msg = new Notification(lastMessageSender, {
+                            // Then the body of the notification becomes the message they sent, the one we grabbed from the array
+                            body: lastMessageSent,
+                            // We also add an icon, if our database had images, we could have put the sender's image here
+                            icon: "notification_icon.png"
+                        });
+                        // We can do something when a user clicks on the notification message here
+                        // msg.addEventListener("click", function (event) {
+                        //     console.log("Do something when the notification message is Clicked");
+                        // });
+                    } else {
+                        // If permission was not granted, we can inform the user in the DOM, but will console log it for now.
+                        console.log("Permession not granted, you can inform the user.");
+                    }
+                });
+            }
+        }
+               
     });
 
     // Grab form divs
@@ -261,8 +295,7 @@ $(document).ready(() => {
             //Check if we have a user
             if (currentUser != null) {
                 // Watch for any change in the database then empty the discussion field...
-                database.ref().on("child_added", function (childSnapshot) {
-                    
+                database.ref().on("child_added", function (childSnapshot) {                    
                     // Empty the discussion field
                     $(".discussion").empty();
                 });
