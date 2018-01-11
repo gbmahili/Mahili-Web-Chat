@@ -9,7 +9,9 @@ body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding:1em;
 }
-
+h1{
+  font-size: 1.5em;
+}
 .fa-toggle-on > span, .fa-toggle-off > span{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
@@ -131,7 +133,7 @@ ul{
 } */
 
 .sm-card-header, .sm-card-block{
-  padding: 7px;
+  padding: 5px;
 }
 
 textarea {
@@ -168,6 +170,10 @@ textarea {
   display: none;
 }
 
+h5{
+  font-size: .7em;
+}
+
 /* Google Like Chat: Credit to CHRIS COYIER ON JUNE 19, 2013 {https://css-tricks.com/replicating-google-hangouts-chat/} */
 
 .discussion {
@@ -177,7 +183,7 @@ textarea {
   padding: 0 0 50px 0;
 }
 .discussion li {
-  padding: 0.5rem;
+  padding: 0.25rem;
   overflow: hidden;
   display: flex;
 }
@@ -228,16 +234,16 @@ textarea {
 
 .messages {
   background: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .messages p {
   font-size: 0.8rem;
-  margin: 0 0 0.2rem 0;
+  margin: 0 0 0.1rem 0;
 }
 .messages time {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   color: rgb(129, 127, 127);
 }
 

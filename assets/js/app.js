@@ -200,7 +200,7 @@ $(document).ready(() => {
                                 $(".logout-button").css("display", "block");
                                 loginForm.css("display", "none");
                                 chatArea.css("display", "block");
-                                $("textarea").focus(); 
+                                // $("textarea").focus(); 
                                 
                                 // Show scroll down:
                                 var vpWidth = $(window).width();
