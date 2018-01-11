@@ -278,6 +278,16 @@ $(document).ready(() => {
             database.ref().update({"allMessages": singleMessageArray });
             // Empty the field where user enters chat message
             $("#chat-message").val("");
+
+            // Scroll to the bottom of the last sent message:
+            $("html, body").animate({
+                scrollTop: $(".all-messages").offset().top + $(".all-messages")[0].scrollHeight
+            }, 1000, function () {
+                var messagesDiv = $('.all-messages');
+                var height = messagesDiv[0].scrollHeight;
+                messagesDiv.scrollTop(height);
+            });
+            return false; 
         }
     });
 
@@ -336,6 +346,9 @@ $(document).ready(() => {
         });
         return false;        
     });
+
+    // Hide the company info on load on smaller devices:
+    $(".fa-toggle-off").click();
     
 
 });//-End of document.ready
