@@ -348,7 +348,10 @@ $(document).ready(() => {
     });
 
     // Hide the company info on load on smaller devices:
-    $(".fa-toggle-off").click();
-    
-
+    var vpWidth = $(window).width();
+    if (vpWidth <= 700) {
+        $(".fa-angle-down").css("display", "inline-block");
+        // $(".fa-angle-up").css("display", "inline-block");
+        $(".fa-toggle-off").click();
+    };
 });//-End of document.ready
