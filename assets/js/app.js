@@ -147,10 +147,11 @@ $(document).ready(() => {
                     var currentUser = firebase.auth().currentUser;
                     var currentUserEmail;
                     //Check if we have a user
-                    if (currentUser != null) {
+                    if (currentUser != null) {                        
                         //Get the user email and name from the database
                         database.ref().on("child_added", function (childSnapshot) {
                             var chatData = childSnapshot.val();
+                            console.log(chatData);
                             //Get the user's email from the authentication system....
                             var currentUserEmail = currentUser.email;
                             
@@ -169,7 +170,6 @@ $(document).ready(() => {
                                 database.ref().on("value", function (snap) {
                                     //Update the allMessages using firebase data
                                     allMessages = snap.val().allMessages;
-                                    console.log(currentUserNames);
                                     // Append messages
                                     allMessages.forEach(element => {
                                         // First, we check who is logged in and check the name of the message sender
@@ -307,7 +307,7 @@ $(document).ready(() => {
                 // Watch for any change in the database then empty the discussion field...
                 database.ref().on("child_added", function (childSnapshot) {                    
                     // Empty the discussion field
-                    $(".discussion").empty();
+                    $(".discussion").empty();                    
                 });
             };
         } else {

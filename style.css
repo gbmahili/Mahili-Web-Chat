@@ -311,4 +311,7 @@ h5{
   .fa-toggle-off {
     display: inline-block;
   }
+  .all-messages{
+    height: 435px;
+  }
 }
