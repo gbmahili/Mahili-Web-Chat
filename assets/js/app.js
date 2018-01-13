@@ -102,7 +102,6 @@ $(document).ready(() => {
                         email: signUpEmail,
                         dateAccountCreated : dateAccountCreated
                     });
-                    console.log('User added to database');
 
                 //Check if user is over 18 and show them the needed info
                 } else {
@@ -134,7 +133,7 @@ $(document).ready(() => {
         e.preventDefault();
         // Grab element values
         const loginEmail = $("#login-email").val().trim();
-        const loginPassword = $("#login-password").val().trim();        
+        const loginPassword = $("#login-password").val().trim();
 
         // Login Process:        
         const auth = firebase.auth();
@@ -147,13 +146,12 @@ $(document).ready(() => {
                     var currentUser = firebase.auth().currentUser;
                     var currentUserEmail;
                     //Check if we have a user
-                    if (currentUser != null) {                        
+                    if (currentUser != null) {                                                
                         //Get the user email and name from the database
                         database.ref().on("child_added", function (childSnapshot) {
                             var chatData = childSnapshot.val();
                             //Get the user's email from the authentication system....
                             var currentUserEmail = currentUser.email;
-                            
                             // Check if the user currently logged in exists in the database and only retrieve their email address and names
                             if (currentUserEmail === chatData.email) {
                                 //Show messages:
@@ -163,12 +161,12 @@ $(document).ready(() => {
                                 
                                 // Get current user's email and name, then display the name
                                 $("#current-user-email").attr("current-user-email", currentUserEmail);
-                                $("#current-user-names").attr("current-user-names", currentUserNames).text(currentUserNames);
+                                $("#current-user-names").attr("current-user-names", currentUserNames).text(currentUserNames);                                
 
                                 // Next, retrieve all the messages from the database and show them to the user:
-                                database.ref().on("value", function (snap) {
+                                database.ref().on("value", function (snap) {                                    
                                     //Update the allMessages using firebase data
-                                    allMessages = snap.val().allMessages;
+                                    allMessages = snap.val().allMessages;                                    
                                     // Append messages
                                     allMessages.forEach(element => {
                                         // First, we check who is logged in and check the name of the message sender
@@ -180,7 +178,7 @@ $(document).ready(() => {
                                         } else {
                                             // Otherwise, we create a class called 'other'
                                             currentUserClass = "other";
-                                        }
+                                        }                                        
                                         // We then use the class. In the css file, messages with 'self' show on right
                                         // While those with 'others' show up on the left
                                         singleMessage = `<li class="${currentUserClass}">
@@ -199,8 +197,7 @@ $(document).ready(() => {
                                 $(".logout-button").css("display", "block");
                                 loginForm.css("display", "none");
                                 chatArea.css("display", "block");
-                                // $("textarea").focus(); 
-                                
+
                                 // Show scroll down:
                                 var vpWidth = $(window).width();
                                 if (vpWidth <= 700) {
@@ -208,10 +205,6 @@ $(document).ready(() => {
                                     $(".fa-angle-up").css("display", "inline-block");
                                     $(".fa-toggle-off").click();
                                 }
-                                
-                                //console.log(vpWidth);
-                            }else{
-                                //console.log("Can't see");
                             }
                         });
                     }
@@ -241,11 +234,8 @@ $(document).ready(() => {
 
     // Logout:
     $(".logout-button").click(e => {
-        console.log("Log Out Button Clicked");
         firebase.auth().signOut();
-        console.log("User has been loged out!");
         location.reload();
-        console.log(allMessages);
         $("#current-user-names").text("No one is logged in!");
         
     });
@@ -266,8 +256,6 @@ $(document).ready(() => {
             var chatDate = moment().format('L');
             // Get time sent
             var chatTimeStamp = moment().format('LT');
-            console.log(chatMessage, chatSender, chatDate, chatTimeStamp);
-
             // Save data into an array:
             database = firebase.database();
             // Push to the single Array
@@ -291,9 +279,13 @@ $(document).ready(() => {
         }
     });
 
+    
+
     // //Add a realtime listener: Keep checking if a user is logged in
-    firebase.auth().onAuthStateChanged(firebaseUser => {        
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+                
         if (firebaseUser) {
+            $(".discussion").empty();
             //Inform that the user is logged in:
             var currentUser = firebase.auth().currentUser;
             // Show scroll down:
@@ -351,7 +343,6 @@ $(document).ready(() => {
     // Hide the company info on load on smaller devices:
     var vpWidth = $(window).width();    
     if (vpWidth <= 700) {
-        //$(".fa-angle-down").css("display", "inline-block");
         $(".fa-toggle-off").click();
     };
 });//-End of document.ready
