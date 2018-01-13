@@ -151,7 +151,6 @@ $(document).ready(() => {
                         //Get the user email and name from the database
                         database.ref().on("child_added", function (childSnapshot) {
                             var chatData = childSnapshot.val();
-                            console.log(chatData);
                             //Get the user's email from the authentication system....
                             var currentUserEmail = currentUser.email;
                             
