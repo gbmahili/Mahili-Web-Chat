@@ -206,6 +206,7 @@ $(document).ready(() => {
                                 if (vpWidth <= 700) {
                                     $(".fa-angle-down").css("display", "inline-block");
                                     $(".fa-angle-up").css("display", "inline-block");
+                                    $(".fa-toggle-off").click();
                                 }
                                 
                                 //console.log(vpWidth);
@@ -300,6 +301,7 @@ $(document).ready(() => {
             if (vpWidth <= 700) {
                 $(".fa-angle-down").css("display", "inline-block");
                 $(".fa-angle-up").css("display", "inline-block");
+                $(".fa-toggle-off").click();
             };
             //Check if we have a user
             if (currentUser != null) {
@@ -349,7 +351,7 @@ $(document).ready(() => {
     // Hide the company info on load on smaller devices:
     var vpWidth = $(window).width();    
     if (vpWidth <= 700) {
-        $(".fa-angle-down").css("display", "inline-block");
+        //$(".fa-angle-down").css("display", "inline-block");
         $(".fa-toggle-off").click();
     };
 });//-End of document.ready
