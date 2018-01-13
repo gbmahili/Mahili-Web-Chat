@@ -164,7 +164,8 @@ $(document).ready(() => {
                                 $("#current-user-names").attr("current-user-names", currentUserNames).text(currentUserNames);                                
 
                                 // Next, retrieve all the messages from the database and show them to the user:
-                                database.ref().on("value", function (snap) {                                    
+                                database.ref().on("value", function (snap) {
+                                    $(".discussion").empty();                                    
                                     //Update the allMessages using firebase data
                                     allMessages = snap.val().allMessages;                                    
                                     // Append messages
