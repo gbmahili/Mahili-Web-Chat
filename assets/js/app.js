@@ -167,7 +167,8 @@ $(document).ready(() => {
                                 database.ref().on("value", function (snap) {
                                     $(".discussion").empty();                                    
                                     //Update the allMessages using firebase data
-                                    allMessages = snap.val().allMessages;                                    
+                                    allMessages = snap.val().allMessages;
+                                    console.log(allMessages[0]);
                                     // Append messages
                                     allMessages.forEach(element => {
                                         // First, we check who is logged in and check the name of the message sender
